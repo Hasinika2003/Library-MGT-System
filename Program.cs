@@ -50,19 +50,18 @@ class Program
 
     static void AddBook()
     {
-        Book b = new Book();
+   
 
         Console.Write("Enter Book ID: ");
-        b.BookId = int.Parse(Console.ReadLine());
+        int id = int.Parse(Console.ReadLine());
 
         Console.Write("Enter Book Title: ");
-        b.Title = Console.ReadLine();
+        string title = Console.ReadLine();
 
         Console.Write("Enter Author Name: ");
-        b.Author = Console.ReadLine();
+        string author = Console.ReadLine();
 
-        b.IsBorrowed = false;
-
+        Book b = new Book(id, title, author);
         books.Add(b);
 
         Console.WriteLine("Book added successfully.");
@@ -83,21 +82,21 @@ class Program
     }
 
     static void AddUser()
-    {
-        User u = new User();
+    { 
 
         Console.Write("Enter User ID: ");
-        u.Id = int.Parse(Console.ReadLine());
+        int id = int.Parse(Console.ReadLine());
 
         Console.Write("Enter User Name: ");
-        u.Name = Console.ReadLine();
+         string name = Console.ReadLine();
 
         Console.Write("Enter Address: ");
-        u.Addres = Console.ReadLine();
+        string addres = Console.ReadLine();
 
         Console.Write("Enter Telephone Number: ");
-        u.TelNo = int.Parse(Console.ReadLine());
+        string telNo = Console.ReadLine();
 
+        User u = new User (id, name, addres, telNo);
         users.Add(u);
 
         Console.WriteLine("User added successfully.");
@@ -128,13 +127,7 @@ class Program
 
         book.IsBorrowed = true;
 
-        Borrow borrow = new Borrow
-        {
-            BookId = bookId,
-            UserId = userId,
-            BorrowDate = DateTime.Now
-        };
-
+        Borrow borrow = new Borrow(bookId, userId);
         borrows.Add(borrow);
 
         Console.WriteLine($"Book '{book.Title}' borrowed successfully by {user.Name}.");
